@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteroid Game</title>
+    <link rel="stylesheet" href="style.css"> <!-- Incluye tus estilos aquí si los tienes -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js"></script> <!-- Carga Pyodide -->
+    <script>
+        async function main() {
+            let pyodide = await loadPyodide(); // Cargar Pyodide
+            await pyodide.loadPackage("pygame"); // Cargar pygame, si es necesario
+            await pyodide.runPythonAsync(`
+                import sys
+                sys.path.append("resources")  # Asegúrate de que tu ruta sea correcta
+                import main  # Importar tu script principal
+            `);
+        }
+        main(); // Ejecutar la función principal
+    </script>
+</head>
+<body>
+    <canvas id="gameCanvas" width="600" height="600"></canvas>
+</body>
+</html>
