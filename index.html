@@ -8,8 +8,11 @@
     <script src="https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js"></script> <!-- Carga Pyodide -->
     <script>
         async function main() {
-            let pyodide = await loadPyodide(); // Cargar Pyodide
-            await pyodide.loadPackage("pygame"); // Cargar pygame, si es necesario
+            // Cargar Pyodide
+            let pyodide = await loadPyodide(); 
+            // Asegúrate de que pygame se carga correctamente
+            await pyodide.loadPackage("pygame");
+            // Ejecutar el script principal
             await pyodide.runPythonAsync(`
                 import sys
                 sys.path.append("resources")  # Asegúrate de que tu ruta sea correcta
@@ -23,3 +26,4 @@
     <canvas id="gameCanvas" width="600" height="600"></canvas>
 </body>
 </html>
+
